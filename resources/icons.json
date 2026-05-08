@@ -1,0 +1,155 @@
+[
+  {
+    "id": "central_checkpoint_start",
+    "name": "中心关卡",
+    "description": "位于中央的巨大关卡。必须通过此关卡才能前往下一个区域。",
+    "icon": {
+      "fixed": "0",
+      "hover": "1"
+    }
+  },
+  {
+    "id": "central_checkpoint",
+    "name": "中心关卡",
+    "description": "位于中央的巨大关卡。必须通过此关卡才能前往下一个区域。",
+    "icon": {
+      "fixed": "4",
+      "hover": "5"
+    }
+  },
+  {
+    "id": "central_checkpoint_last",
+    "name": "中心关卡",
+    "description": "位于中央的巨大关卡。必须通过此关卡才能前往下一个区域。",
+    "icon": {
+      "fixed": "8",
+      "hover": "9"
+    }
+  },
+  {
+    "id": "relic_excavation_zone",
+    "name": "遗物发掘地带",
+    "description": "通过调查可以回收遗物的区域。使用遗物可获得辅助战斗的力量，但无法预知将获得哪种遗物。",
+    "icon": {
+      "fixed": "12",
+      "hover": "13"
+    }
+  },
+  {
+    "id": "armament_warehouse",
+    "name": "战备仓库",
+    "description": "残留着不规则记忆与痕迹的地方。似乎可以获得各式装备。",
+    "icon": {
+      "uncommon": "16",
+      "uncommon_hover": "17",
+      "rare": "24",
+      "rare_hover": "25",
+      "unique": "28",
+      "unique_hover": "29",
+      "legendary": "32",
+      "legendary_hover": "33",
+      "epic": "36",
+      "epic_hover": "37",
+      "primeval": "40",
+      "primeval_hover": "41"
+    }
+  },
+  {
+    "id": "tuner_trace",
+    "name": "调律者痕迹",
+    "description": "观测到特殊反应的地点。据说此处发现了各种各样的星蕴石。",
+    "icon": {
+      "rare": "44",
+      "rare_hover": "45",
+      "unique": "48",
+      "unique_hover": "49",
+      "legendary": "52",
+      "legendary_hover": "53",
+      "epic": "56",
+      "epic_hover": "57",
+      "primeval": "60",
+      "primeval_hover": "61"
+    }
+  },
+  {
+    "id": "giant_armament_warehouse",
+    "name": "巨大的战备仓库",
+    "description": "有报告称在外围诡异的残影中发现了多种装备。似乎可以获得拥有未知力量的装备。",
+    "icon": {
+      "rare": "64",
+      "rare_hover": "65",
+      "unique": "68",
+      "unique_hover": "69",
+      "legendary": "72",
+      "legendary_hover": "73",
+      "epic": "76",
+      "epic_hover": "77",
+      "primeval": "80",
+      "primeval_hover": "81"
+    }
+  },
+  {
+    "id": "tuner_left_trace",
+    "name": "调律者留下的痕迹",
+    "description": "有报告称发现了特殊星蕴石。似乎可以获得多种星蕴石。",
+    "icon": {
+      "rare": "84",
+      "rare_hover": "85",
+      "unique": "88",
+      "unique_hover": "89",
+      "legendary": "92",
+      "legendary_hover": "93",
+      "epic": "96",
+      "epic_hover": "97",
+      "primeval": "100",
+      "primeval_hover": "101"
+    }
+  },
+  {
+    "id": "labyrinth_supply_base",
+    "name": "迷宫补给基地",
+    "description": "为支援迷宫区域探索而设立的补给区域。可以获取进行额外探索所需的许可券。",
+    "icon": {
+      "key": "124",
+      "key_hover": "125",
+      "ticket": "104",
+      "ticket_hover": "105"
+    }
+  },
+  {
+    "id": "chaotic_radiance_pilgrimage",
+    "name": "错乱的光辉巡礼",
+    "description": "这是曾朝着光芒前行的巡礼残影。它因未知的原因渗入迷宫，呈现出与原本光辉截然不同的形态。",
+    "icon": {
+      "fixed": "112",
+      "hover": "113"
+    }
+  },
+  {
+    "id": "chaotic_life_pilgrimage",
+    "name": "错乱的生命巡礼",
+    "description": "这道巡礼的痕迹本源自其他土地。却不知为何出现在悖论迷宫之中。因而失去了原有的意义，只余下扭曲的路径。",
+    "icon": {
+      "fixed": "108",
+      "hover": "109"
+    }
+  },
+  {
+    "id": "dual_phenomenon",
+    "name": "双重现象",
+    "description": "因异常现象，多个场所与记忆正交错显现。通过探索来确认一下吧。",
+    "icon": {
+      "fixed": "120",
+      "hover": "121"
+    }
+  },
+  {
+    "id": "deviated_thousand_seas_sky",
+    "name": "偏离的千海之天",
+    "description": "此地同时残留着生命痕迹与终末景象。无人知晓它为何会存在于迷宫之中。",
+    "icon": {
+      "fixed": "116",
+      "hover": "117"
+    }
+  }
+]

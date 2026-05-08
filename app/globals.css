@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #1a0f08;
+  font-family: "Microsoft YaHei", "SimHei", sans-serif;
+  color: #ead8b6;
+}
+
+* {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Wood-grain page background */
+.wood-bg {
+  background-color: #2d1c10;
+  background-image:
+    radial-gradient(ellipse at center, rgba(60, 40, 25, 0.55) 0%, rgba(20, 12, 6, 0.85) 75%),
+    repeating-linear-gradient(90deg,
+      rgba(255, 220, 170, 0.04) 0px,
+      rgba(255, 220, 170, 0.04) 2px,
+      transparent 2px,
+      transparent 6px),
+    linear-gradient(180deg, #3a2418 0%, #1f130a 100%);
+}
+
+.parchment-bg {
+  background-color: #c8a96b;
+  background-image:
+    radial-gradient(ellipse at center, rgba(245, 220, 170, 0.4) 0%, rgba(110, 75, 40, 0.35) 75%),
+    linear-gradient(180deg, #d6b984 0%, #a47d4a 100%);
+}
+
+/* Hexagon clip path */
+.hex-clip {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Title text styling */
+.title-text {
+  display: inline-block;
+  font-family: "Source Han Serif SC", "Noto Serif SC", "Source Han Serif CN", serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  background: linear-gradient(180deg,
+    #efe6cf 0%,
+    #d8c89a 30%,
+    #a89260 65%,
+    #6e5a32 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.gold-text {
+  color: #f3c14b;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Green check overlay */
+.green-check {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+}
+.green-check svg {
+  width: 70%;
+  height: 70%;
+  filter: drop-shadow(0 0 6px rgba(60, 200, 80, 0.95))
+    drop-shadow(0 0 2px rgba(20, 100, 30, 1));
+}
