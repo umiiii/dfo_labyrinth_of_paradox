@@ -89,15 +89,20 @@ export default function GuideShell({
           </ul>
         </nav>
 
-        <div className="border-t border-stone-800 p-3 text-center text-xs text-stone-400">
-          <a
-            href="https://bbs.colg.cn/home.php?mod=spacecp"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-amber-300"
-          >
-            by umi_
-          </a>
+        <div className="border-t border-stone-800 p-3 text-center text-xs text-stone-400 space-y-1">
+          <div>
+            <a
+              href="https://bbs.colg.cn/home.php?mod=space&uid=4272193"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-amber-300"
+            >
+              by umi_
+            </a>
+          </div>
+          <div className="text-stone-500">
+            version {(process.env.NEXT_PUBLIC_COMMIT_SHA ?? 'dev').slice(-6)}
+          </div>
         </div>
       </aside>
 

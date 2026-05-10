@@ -1,8 +1,23 @@
+import { execSync } from 'node:child_process';
+
+const commitSha =
+  process.env.VERCEL_GIT_COMMIT_SHA ||
+  (() => {
+    try {
+      return execSync('git rev-parse HEAD').toString().trim();
+    } catch {
+      return 'dev';
+    }
+  })();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  env: {
+    NEXT_PUBLIC_COMMIT_SHA: commitSha,
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 30,
