@@ -131,6 +131,22 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <Script
+          id="google-adsense"
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6345227285458042"
+          crossOrigin="anonymous"
+        />
+        <Script
+          id="ga-loader"
+          async
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-K05J1EKYH2"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-K05J1EKYH2')`}
+        </Script>
+        <Script
           id="LA_COLLECT"
           strategy="afterInteractive"
           src="https://sdk.51.la/js-sdk-pro.min.js"
