@@ -3,6 +3,7 @@ export interface FloorNode {
   col: number;
   icon_id: string;
   tier?: string;
+  rewards?: RewardItem[];
 }
 
 export interface FloorEdge {

@@ -52,7 +52,10 @@
       "epic_hover": "37",
       "primeval": "40",
       "primeval_hover": "41"
-    }
+    },
+    "rewards": [
+      { "image": "/rewards/equipment_set_box_{tier}.PNG", "label": "自选" }
+    ]
   },
   "tuner_trace": {
     "id": "tuner_trace",
@@ -69,7 +72,10 @@
       "epic_hover": "57",
       "primeval": "60",
       "primeval_hover": "61"
-    }
+    },
+    "rewards": [
+      { "image": "/rewards/oath_crystal_box_{tier}.PNG" }
+    ]
   },
   "giant_armament_warehouse": {
     "id": "giant_armament_warehouse",
@@ -86,7 +92,10 @@
       "epic_hover": "77",
       "primeval": "80",
       "primeval_hover": "81"
-    }
+    },
+    "rewards": [
+      { "image": "/rewards/equipment_set_box_{tier}.PNG", "label": "随机" }
+    ]
   },
   "tuner_left_trace": {
     "id": "tuner_left_trace",
@@ -103,7 +112,10 @@
       "epic_hover": "97",
       "primeval": "100",
       "primeval_hover": "101"
-    }
+    },
+    "rewards": [
+      { "image": "/rewards/oath_crystal_box_{tier}.PNG" }
+    ]
   },
   "labyrinth_supply_base": {
     "id": "labyrinth_supply_base",
@@ -123,7 +135,10 @@
     "icon": {
       "fixed": "112",
       "hover": "113"
-    }
+    },
+    "rewards": [
+      { "image": "/rewards/doom_oracle.PNG", "label": "账绑" }
+    ]
   },
   "chaotic_life_pilgrimage": {
     "id": "chaotic_life_pilgrimage",

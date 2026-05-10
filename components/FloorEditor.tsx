@@ -7,6 +7,7 @@ import type {
   FloorNode,
   IconDict,
   NodeKey,
+  RewardItem,
 } from '@/types/labyrinth';
 import { deriveEdges, resolveIcon } from '@/lib/floor-utils';
 
@@ -135,6 +136,25 @@ export default function FloorEditor({ iconDict }: FloorEditorProps) {
     const next = { ...nodes };
     next[k] = { ...cur, ...(tier === EMPTY ? {} : { tier }) };
     if (tier === EMPTY) delete next[k].tier;
+    setNodes(next);
+  };
+
+  const updateRewards = (
+    r: number,
+    c: number,
+    fn: (rewards: RewardItem[]) => RewardItem[],
+  ) => {
+    const k = cellKey(r, c);
+    const cur = nodes[k];
+    if (!cur) return;
+    const nextRewards = fn(cur.rewards ?? []);
+    const next = { ...nodes };
+    if (nextRewards.length === 0) {
+      const { rewards: _omit, ...rest } = cur;
+      next[k] = rest;
+    } else {
+      next[k] = { ...cur, rewards: nextRewards };
+    }
     setNodes(next);
   };
 
@@ -477,6 +497,13 @@ export default function FloorEditor({ iconDict }: FloorEditorProps) {
                         ))}
                       </select>
                     )}
+                    {node && (
+                      <RewardsEditor
+                        rewards={node.rewards}
+                        defaultRewards={iconDict[node.icon_id]?.rewards}
+                        onChange={(fn) => updateRewards(r, c, fn)}
+                      />
+                    )}
                   </div>
                 );
               }
@@ -543,6 +570,122 @@ export default function FloorEditor({ iconDict }: FloorEditorProps) {
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+interface RewardsEditorProps {
+  rewards: RewardItem[] | undefined;
+  defaultRewards: RewardItem[] | undefined;
+  onChange: (fn: (rewards: RewardItem[]) => RewardItem[]) => void;
+}
+
+function RewardsEditor({
+  rewards,
+  defaultRewards,
+  onChange,
+}: RewardsEditorProps) {
+  const overridden = rewards !== undefined;
+  const list = rewards ?? [];
+  const showingDefault = !overridden && (defaultRewards?.length ?? 0) > 0;
+
+  const update = (idx: number, patch: Partial<RewardItem>) => {
+    onChange((cur) => {
+      const next = cur.length > 0 ? [...cur] : (defaultRewards ?? []).map((r) => ({ ...r }));
+      next[idx] = { ...next[idx], ...patch };
+      return next;
+    });
+  };
+  const remove = (idx: number) => {
+    onChange((cur) => {
+      const base = cur.length > 0 ? cur : (defaultRewards ?? []);
+      return base.filter((_, i) => i !== idx);
+    });
+  };
+  const add = () => {
+    onChange((cur) => {
+      const base = cur.length > 0 ? cur : (defaultRewards ?? []);
+      return [...base, { image: '/rewards/' }];
+    });
+  };
+  const clearOverride = () => {
+    onChange(() => []);
+  };
+
+  const visible = overridden ? list : (defaultRewards ?? []);
+
+  return (
+    <div className="mt-1 border-t border-stone-700/60 pt-1">
+      <div className="flex items-center justify-between text-[10px] text-stone-400 mb-1">
+        <span>奖励{showingDefault ? '（默认）' : overridden ? '（覆盖）' : ''}</span>
+        <div className="flex gap-1">
+          {overridden && (
+            <button
+              type="button"
+              onClick={clearOverride}
+              className="px-1 text-stone-400 hover:text-amber-300"
+              title="还原为默认"
+            >
+              ↺
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={add}
+            className="px-1 text-amber-400 hover:text-amber-300"
+            title="添加奖励"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      {visible.length === 0 && (
+        <div className="text-[10px] text-stone-600">无</div>
+      )}
+      {visible.map((rw, idx) => (
+        <div key={idx} className="flex items-center gap-1 mb-1">
+          <img
+            src={rw.image.includes('{tier}') ? '' : rw.image}
+            alt=""
+            className="w-6 h-6 object-contain bg-stone-800 border border-stone-700 shrink-0"
+          />
+          <input
+            type="text"
+            value={rw.image}
+            onChange={(e) => update(idx, { image: e.target.value })}
+            placeholder="/rewards/xxx.PNG"
+            className="flex-1 min-w-0 text-[10px] bg-stone-800 border border-stone-700 rounded px-1 py-0.5"
+          />
+          <input
+            type="number"
+            value={rw.count ?? ''}
+            onChange={(e) =>
+              update(idx, {
+                count: e.target.value === '' ? undefined : Number(e.target.value),
+              })
+            }
+            placeholder="×"
+            className="w-10 text-[10px] bg-stone-800 border border-stone-700 rounded px-1 py-0.5"
+          />
+          <input
+            type="text"
+            value={rw.label ?? ''}
+            onChange={(e) =>
+              update(idx, { label: e.target.value === '' ? undefined : e.target.value })
+            }
+            placeholder="标签"
+            className="w-12 text-[10px] bg-stone-800 border border-stone-700 rounded px-1 py-0.5"
+          />
+          <button
+            type="button"
+            onClick={() => remove(idx)}
+            className="px-1 text-[10px] text-stone-400 hover:text-red-300"
+            title="删除"
+          >
+            ×
+          </button>
+        </div>
+      ))}
     </div>
   );
 }

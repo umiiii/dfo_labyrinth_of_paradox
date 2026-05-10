@@ -8,6 +8,7 @@ import type {
   ResolvedIcon,
   RewardItem,
 } from '@/types/labyrinth';
+import { resolveRewards } from '@/lib/floor-utils';
 
 interface MazeNodeProps {
   node: FloorNode;
@@ -60,7 +61,7 @@ export default function MazeNode({
           <NodeTooltip
             name={iconDef.name}
             description={iconDef.description}
-            rewards={iconDef.rewards}
+            rewards={resolveRewards(node.rewards ?? iconDef.rewards, node.tier)}
             x={mouse.x}
             y={mouse.y}
           />,

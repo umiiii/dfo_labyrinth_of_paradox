@@ -5,6 +5,7 @@ import type {
   DerivedEdge,
   NodeKey,
   ResolvedIcon,
+  RewardItem,
 } from '@/types/labyrinth';
 
 const SPRITE_BASE = '/resources/stageicon.img';
@@ -93,4 +94,21 @@ export function resolveIcon(
     fixed: `${SPRITE_BASE}/${fixedIdx}.PNG`,
     hover: `${SPRITE_BASE}/${hoverIdx ?? fixedIdx}.PNG`,
   };
+}
+
+export function resolveRewards(
+  rewards: RewardItem[] | undefined,
+  tier?: string,
+): RewardItem[] {
+  if (!rewards || rewards.length === 0) return [];
+  const out: RewardItem[] = [];
+  for (const r of rewards) {
+    if (r.image.includes('{tier}')) {
+      if (!tier) continue;
+      out.push({ ...r, image: r.image.replace('{tier}', tier) });
+    } else {
+      out.push(r);
+    }
+  }
+  return out;
 }
